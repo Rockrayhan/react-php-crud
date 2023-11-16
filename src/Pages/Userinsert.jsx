@@ -1,8 +1,12 @@
 import axios from 'axios';
 import React, { useState } from 'react';
+import {  useNavigate } from 'react-router-dom';
+
 
 const Userinsert = () => {
     const [userInfo, setUserInfo] = useState({})
+    const navigate = useNavigate();
+
     
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -20,8 +24,8 @@ const Userinsert = () => {
         axios.post("http://localhost/wdpf55_react/react-app-3/API/userInsert.php", 
         { data:userInfo }).then(res => {
             // alert(" Something returned ") ;
-            console.log(res.data);
-            alert("data inserted Successfully") ;
+            alert(res.data.msg);
+            navigate("/users");
         })
     }
 
